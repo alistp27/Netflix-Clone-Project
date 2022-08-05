@@ -1,5 +1,5 @@
 import React, { useState, useContext, createContext } from 'react'
-import { Title, Frame, Item, Header, Body, Container, Inner } from './styles/style'
+import { Title, Item, Header, Body, Container, Inner } from './styles/style'
 
 const ToggleContext = createContext();
 
@@ -14,11 +14,6 @@ export default function Accordion({ children, ...restprops }) {
 Accordion.Title = function AccordionTitle({ children, ...restprops }) {
     return (
         <Title {...restprops}>{children}</Title>
-    )
-}
-Accordion.Frame = function AccordionFrame({ children, ...restprops }) {
-    return (
-        <Frame {...restprops}>{children}</Frame>
     )
 }
 Accordion.Item = function AccordionItem({ children, ...restprops }) {

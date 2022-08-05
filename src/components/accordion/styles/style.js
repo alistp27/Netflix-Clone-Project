@@ -14,6 +14,7 @@ padding : 70px 45px;
 export const Item = styled.div`
 margin-bottom : 10px;
 color : white ;
+max-width: 648px;
 &:first-of-type{
     margin-top : 3rem;
 }
@@ -21,6 +22,7 @@ color : white ;
 export const Header = styled.div`
 display : flex;
 justify-content: space-between;
+max-width: 648px;
 cursor : pointer;
 margin-bottom : 3px;
 font-size : 26px;
@@ -41,9 +43,20 @@ img{
     font-size : 16px;
 }    
 `;
-export const Body = styled.div``;
-export const Frame = styled.div`
-margin-bottom : 40px;
+export const Body = styled.div`
+max-height : 1200px;
+transition : max-height 0.5s ease-in-out;
+margin-bottom : 3px;
+font-size : 26px;
+background : #303030;
+padding : 0.8rem 1.2rem;
+align-items: center;
+white-space: pre-wrap;
+
+@media (max-width:600px) {
+    font-size : 16px;
+    line-height :22px
+}
 `;
 export const Title = styled.h1`
 font-size : 50px;
