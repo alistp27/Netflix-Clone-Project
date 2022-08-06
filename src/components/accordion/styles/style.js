@@ -15,6 +15,8 @@ export const Item = styled.div`
 margin-bottom : 10px;
 color : white ;
 max-width: 648px;
+margin : auto;
+width : 100%;
 &:first-of-type{
     margin-top : 3rem;
 }
@@ -27,7 +29,7 @@ cursor : pointer;
 margin-bottom : 3px;
 font-size : 26px;
 background : #303030;
-padding : 0.8rem 1.2rem;
+padding: 1.8rem 1.2rem;
 align-items: center;
 
 img{
