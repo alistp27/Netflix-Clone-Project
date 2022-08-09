@@ -1,13 +1,21 @@
 import React from 'react';
-import { JumpbotronContainer } from './Container/jumbotronContainer'
-import { FooterContainer } from './Container/footerContainer'
-import AccordionContainer from './Container/accordionContainer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import { SignIn } from './pages/SignIn'
+import { SignUp } from './pages/SignUp';
+import { Browse } from './pages/Browse';
+
 const App = () => {
     return (
         <>
-            <JumpbotronContainer />
-            <AccordionContainer />
-            <FooterContainer />
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/signin' element={<SignIn />} />
+                    <Route path='/signup' element={<SignUp />} />
+                    <Route path='/browse' element={<Browse />} />
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }
