@@ -4,6 +4,7 @@ import { HeaderContainer } from '../Container/headerContainer'
 import { JumpbotronContainer } from '../Container/jumbotronContainer'
 import { FooterContainer } from '../Container/footerContainer'
 import AccordionContainer from '../Container/accordionContainer'
+import {Feature} from '../components/feature/index'
 export default function Home() {
     return (
         <>
@@ -11,7 +12,6 @@ export default function Home() {
                 <Feature>
                     <Feature.Title>Unlimited Films,TV Programmes And More </Feature.Title>
                     <Feature.SubTitle>Watch AnyWhere. Cancel At Any Time.</Feature.SubTitle>
-                </Feature>
                 <OptForm>
                     <OptForm.Input placeholder="Email Address" />
                     <OptForm.Button>Try It Now</OptForm.Button>
@@ -20,6 +20,7 @@ export default function Home() {
                         Ready to watch? Enter your email to create or restart your membership
                     </OptForm.Text>
                 </OptForm>
+                </Feature>
             </HeaderContainer>
             <JumpbotronContainer />
             <AccordionContainer />
