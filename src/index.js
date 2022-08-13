@@ -4,12 +4,15 @@ import App from './App';
 import { Globalstyle } from './global-styles'
 import 'normalize.css'
 import { firebase } from './lib/firebase.prod'
+import { FireBase } from './context/firebase';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-        <Globalstyle />
-        <App />
+        <FireBase.Provider value = {{firebase}}>
+            <Globalstyle />
+            <App />
+        </FireBase.Provider>
     </>
 );
 
