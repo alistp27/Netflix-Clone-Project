@@ -10,6 +10,7 @@ export function SignIn() {
   const isInValid = Pass ===''|| Email ==='';
   const signinHandler = (event) => {
     event.preventDefault()
+
   }
   return (
     <>
@@ -38,6 +39,9 @@ export function SignIn() {
         New to Netflix? 
         <Form.Link to = "/signup">Sign Up From Here!</Form.Link>
       </Form.Text>
+      <Form.SmallText>
+        This Page Is Protected By google reCAPTCHA To Ensure That You Are Not A Bot . Learn More.
+      </Form.SmallText>
     </Form>
     </HeaderContainer>
     <FooterContainer />
