@@ -9,7 +9,7 @@ import { FireBase } from './context/firebase';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-        <FireBase.Provider value = {{firebase}}>
+        <FireBase.Provider value={{ firebase }}>
             <Globalstyle />
             <App />
         </FireBase.Provider>
