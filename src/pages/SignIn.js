@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HeaderContainer } from "../Container/headerContainer";
 import { FooterContainer } from "../Container/footerContainer";
 import { Form } from "../components/form";
@@ -29,7 +29,7 @@ export function SignIn() {
   };
   return (
     <>
-      <HeaderContainer buttonToText={'Sign Up'} buttonToLink = {'/signup'}>
+      <HeaderContainer buttonToText={'Sign Up'} buttonToLink={'/signup'}>
         <Form>
           <Form.Title>HI MY NAME IS ALISTP@&</Form.Title>
           {error && <Form.Error> there is an Error</Form.Error>}
@@ -44,6 +44,7 @@ export function SignIn() {
             <Form.Input
               type="password"
               placeholder="Password"
+              autoComplete="true"
               value={Pass}
               onChange={({ target }) => setPass(target.value)}
             />
