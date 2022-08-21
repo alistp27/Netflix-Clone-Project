@@ -1,6 +1,10 @@
 import React from 'react'
-
+import useContent from '../hooks/use-content'
 export function Browse() {
+  const {series} = useContent('series')
+  console.log(series)
+  const {films} = useContent('films')
+  console.log(films)
   return (
     <div>Browse</div>
   )
