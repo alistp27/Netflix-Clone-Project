@@ -2,19 +2,20 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import { SignUp } from './pages/SignUp';
-import { Browse } from './pages/Browse';
 import { IsUserRedirect } from './helpers/routes';
+import { SignIn } from './pages/SignIn';
+import { Browse } from './pages/Browse';
 
 const App = () => {
-    const user = {}
+    const user = null
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/signup' element={<SignUp />} />
-                    <Route path='/browse' element={<Browse />} />
-                    <Route path = '/signin' element = {<IsUserRedirect user={user}/>}/>
+                    <Route path='/' element={<IsUserRedirect user={user}><Home /></IsUserRedirect>} />
+                    <Route path='/signup' element={<IsUserRedirect user={user}><SignUp /></IsUserRedirect>} />
+                    <Route path='/browse' element={<IsUserRedirect user={user}><Browse /></IsUserRedirect>} />
+                    <Route path = '/signin' element = {<IsUserRedirect user={user}><SignIn /></IsUserRedirect>}/>
                 </Routes>
             </BrowserRouter>
         </>
