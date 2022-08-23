@@ -20,23 +20,9 @@ margin : 0;
 padding : 0;
 display : flex;
 flex-direction : row;
-`
-export const Item = styled.li`
-max-height :200px;
-max-width :200px;
-list-style-type : none;
-text-align : center;
-margin-right : 30px;
-
-&:hover >${Picture}{
-    border : 5px solid white;
-}
-
-&:hover ${Name}{
-    font-weight : bold;
-    color:white;
-}
-
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 `
 export const Picture = styled.img`
 width : 100%;
@@ -54,4 +40,22 @@ font-size :16px;
     font-weight : bold;
     color : #e5e5e5;
 }
+`
+
+export const Item = styled.li`
+max-height :200px;
+max-width :200px;
+list-style-type : none;
+text-align : center;
+margin-right : 30px;
+
+&:hover >${Picture}{
+    border : 5px solid white;
+}
+
+&:hover ${Name}{
+    font-weight : bold;
+    color:white;
+}
+
 `
