@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import ProfileSelection from './profileContainer'
 import { FireBase } from '../context/firebase'
 import { Loading } from '../components/loading/index'
+import {Card} from '../components/cards/index'
 import Header from '../components/header'
 import Logo from '../logo.svg'
 
@@ -10,6 +11,8 @@ export default function BrowserContainer({ slides }) {
     const { firebase } = useContext(FireBase)
     const user = firebase.auth().currentUser || {}
     const [searchTerm, setSearchTerm] = useState('')
+    const [Category, setCategory] = useState('series')
+    const [SlideRow, setSlideRow] = useState([])
     // with every reload you do , the profile state set to null because maybe you wanted to see movies from another account you have (we cann't have multiaccounts but it's there to feel more like netflix)
     const [profile, setprofile] = useState({
         displayName: null,
@@ -24,6 +27,11 @@ export default function BrowserContainer({ slides }) {
             console.log("hi")
         }, 3000);
     }, [profile.displayName])
+
+    useEffect(() => {
+        setSlideRow(slides[Category])
+    }, [slides,Category])
+    
 // Protected Routes,when you are not logged in , you can not access to the Browse page
     return (profile.displayName ? (
         <>
@@ -32,8 +40,8 @@ export default function BrowserContainer({ slides }) {
                 <Header.Frame>
                     <Header.Group>
                         <Header.Logo to={'/'} src={Logo} alt={'NetFlix'} />
-                        <Header.TextLink>Series</Header.TextLink>
-                        <Header.TextLink>Films</Header.TextLink>
+                        <Header.TextLink active ={Category ==='series'?true:false} onClick ={()=>setCategory('series')}>Series</Header.TextLink>
+                        <Header.TextLink active ={Category ==='films'?true:false} onClick ={()=>setCategory('films')}>Films</Header.TextLink>
                     </Header.Group>
 
                     <Header.Group>
@@ -63,6 +71,9 @@ export default function BrowserContainer({ slides }) {
                     <Header.PlayButton>Play</Header.PlayButton>
                 </Header.Feature>
             </Header>
+            <Card.Group>
+
+            </Card.Group>
         </>
 
     ) : (

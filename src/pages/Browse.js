@@ -10,6 +10,6 @@ export function Browse() {
     console.log(slides);
 
     return(
-      <BrowserContainer />
+      <BrowserContainer  slides={slides}/>
     )
   }
