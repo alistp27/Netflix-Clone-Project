@@ -30,28 +30,74 @@ export function Card({ children, ...restprops }) {
 }
 
 Card.Group = function CardGroup({ children, ...restprops }) {
-    <Group {...restprops}>{children}</Group>;
+    return (
+
+        <Group {...restprops}>{children}</Group>
+    )
 };
 
 Card.Title = function CardTitle({ children, ...restprops }) {
-    <Title {...restprops}>{children}</Title>;
+    return (
+
+        <Title {...restprops}>{children}</Title>
+    )
 };
 
 Card.SubTitle = function CardSubTitle({ children, ...restprops }) {
-    <SubTitle {...restprops}>{children}</SubTitle>;
+    return (
+
+        <SubTitle {...restprops}>{children}</SubTitle>
+    )
 };
 
 Card.Text = function CardText({ children, ...restprops }) {
-    <Text {...restprops}>{children}</Text>;
+    return (
+
+        <Text {...restprops}>{children}</Text>
+    )
 };
 
 Card.Entities = function CardEntities({ children, ...restprops }) {
-    <Entities {...restprops}>{children}</Entities>;
+    return (
+
+        <Entities {...restprops}>{children}</Entities>
+    )
 };
 
+Card.Feature = function CardFeature({ children, category, ...restprops }) {
+    const { ShowFeature, setShowFeature, ItemFeature } = useContext(FeatureContext)
+    return (
+        ShowFeature?(
+            <Feature {...restprops} src = {`/images/${category}/${ItemFeature.genre}/${ItemFeature.slug}/large.jpg`}>
+                <Content>
+                        <FeatureTitle>{ItemFeature.title}</FeatureTitle>
+                        <FeatureText>{ItemFeature.description}</FeatureText>
+                        <FeatureClose onClick = {()=> setShowFeature(false)}>
+                            <img src="/images/icons/close.png" alt="Close"/>
+                        </FeatureClose>
+                    <Group alignItems ={"center"}>
+                        <Maturity rating = {ItemFeature.maturity}>
+                            {ItemFeature.maturity<12?"PG":ItemFeature.maturity}
+                        </Maturity>
+                        <FeatureText fontWeight ="bold">
+                            {ItemFeature.genre.charAt(0).toUpperCase()+ItemFeature.genre.slice(1)}
+                        </FeatureText>
+                    </Group> 
+                {children}
+                </Content>
+            </Feature>
+        ):null
+    )
+}
+
+
 Card.Meta = function CardMeta({ children, ...restprops }) {
-    <Meta {...restprops}>{children}</Meta>;
+    return (
+
+        <Meta {...restprops}>{children}</Meta>
+    )
 };
+
 
 Card.Item = function CardItem({ item, children, ...restprops }) {
     const { setItemFeature, setShowFeature } = useContext(FeatureContext);
@@ -69,5 +115,5 @@ Card.Item = function CardItem({ item, children, ...restprops }) {
 };
 
 Card.Image = function CardImage({ ...restprops }) {
-    return <Image {...restprops} />;
+    return <Image {...restprops} />
 };

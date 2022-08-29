@@ -202,7 +202,7 @@ font-size:20px;
 margin-top:30px;
 cursor:pointer;
 font-weight:bold;
-transition : all 0.5s ease;
+transition : all 0.3s ease;
 
 &:hover{
     background-color:#ff1e1e;

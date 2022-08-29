@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react'
 import ProfileSelection from './profileContainer'
 import { FireBase } from '../context/firebase'
 import { Loading } from '../components/loading/index'
-import {Card} from '../components/cards/index'
+import { Card } from '../components/cards/index'
+import {FooterContainer} from './footerContainer'
 import Header from '../components/header'
 import Logo from '../logo.svg'
 
@@ -30,9 +31,10 @@ export default function BrowserContainer({ slides }) {
 
     useEffect(() => {
         setSlideRow(slides[Category])
-    }, [slides,Category])
-    
-// Protected Routes,when you are not logged in , you can not access to the Browse page
+        console.log(SlideRow)
+    }, [slides, Category, SlideRow])
+
+    // Protected Routes,when you are not logged in , you can not access to the Browse page
     return (profile.displayName ? (
         <>
             {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
@@ -40,8 +42,8 @@ export default function BrowserContainer({ slides }) {
                 <Header.Frame>
                     <Header.Group>
                         <Header.Logo to={'/'} src={Logo} alt={'NetFlix'} />
-                        <Header.TextLink active ={Category ==='series'?true:false} onClick ={()=>setCategory('series')}>Series</Header.TextLink>
-                        <Header.TextLink active ={Category ==='films'?true:false} onClick ={()=>setCategory('films')}>Films</Header.TextLink>
+                        <Header.TextLink active={Category === 'series' ? true : false} onClick={() => setCategory('series')}>Series</Header.TextLink>
+                        <Header.TextLink active={Category === 'films' ? true : false} onClick={() => setCategory('films')}>Films</Header.TextLink>
                     </Header.Group>
 
                     <Header.Group>
@@ -72,8 +74,37 @@ export default function BrowserContainer({ slides }) {
                 </Header.Feature>
             </Header>
             <Card.Group>
-
+            
+                {SlideRow.map((slideItem) => {console.log(slideItem.title,"HI FROM HERE"); return (
+                    <Card key={`${Category}-${slideItem.title.toLowerCase()}`}>
+                        <Card.Title>
+                            {slideItem.title}
+                        </Card.Title>
+                        <Card.Entities>
+                            {slideItem.data.map((item)=>{
+                                return(
+                                    <Card.Item key = {item.docId} item ={item}>
+                                        <Card.Image src ={`/images/${Category}/${item.genre}/${item.slug}/small.jpg`}/>
+                                        <Card.Meta>
+                                            <Card.SubTitle>{item.title}</Card.SubTitle>
+                                            <Card.Text>{item.description}</Card.Text>
+                                        </Card.Meta>
+                                    </Card.Item>
+                                )
+                            })}
+                        </Card.Entities>
+                        <Card.Feature category = {Category}>
+                            {/* <Player>
+                                <Player.button />
+                                <Player.video src ={`/video/bunny.mp4`} />
+                            </Player> */}
+                        </Card.Feature>
+                    </Card>
+                    )} 
+                )
+            }
             </Card.Group>
+            <FooterContainer />
         </>
 
     ) : (
