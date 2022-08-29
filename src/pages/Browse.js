@@ -7,6 +7,7 @@ export function Browse() {
     const { films } = useContent("films");
 
     const slides = sectionFILTER({ series, films });
+    console.log(slides);
 
     return(
       <BrowserContainer  slides={slides}/>
