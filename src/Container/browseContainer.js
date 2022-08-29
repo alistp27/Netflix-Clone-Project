@@ -6,6 +6,8 @@ import { Card } from '../components/cards/index'
 import {FooterContainer} from './footerContainer'
 import Header from '../components/header'
 import Logo from '../logo.svg'
+import Player from '../components/player/index'
+import Fuse from 'fuse.js'
 
 
 export default function BrowserContainer({ slides }) {
@@ -28,11 +30,21 @@ export default function BrowserContainer({ slides }) {
             console.log("hi")
         }, 3000);
     }, [profile.displayName])
+    useEffect(() => {
+        const fuse = new Fuse(SlideRow, { keys: ['data.description', 'data.title', 'data.genre'] });
+        const results = fuse.search(searchTerm).map(({ item }) => item);
+    
+            if (SlideRow.length > 0 && searchTerm.length > 3 && results.length > 0) {
+            setSlideRow(results);
+            } else {
+            setSlideRow(slides[Category]);
+            }
+        }, [searchTerm]);
+        
 
     useEffect(() => {
         setSlideRow(slides[Category])
-        console.log(SlideRow)
-    }, [slides, Category, SlideRow])
+    }, [slides, Category,])
 
     // Protected Routes,when you are not logged in , you can not access to the Browse page
     return (profile.displayName ? (
@@ -94,10 +106,10 @@ export default function BrowserContainer({ slides }) {
                             })}
                         </Card.Entities>
                         <Card.Feature category = {Category}>
-                            {/* <Player>
-                                <Player.button />
-                                <Player.video src ={`/video/bunny.mp4`} />
-                            </Player> */}
+                            <Player>
+                                <Player.Button />
+                                <Player.Video src ={`/videos/bunny.mp4`} />
+                            </Player>
                         </Card.Feature>
                     </Card>
                     )} 
