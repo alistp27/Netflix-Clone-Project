@@ -27,7 +27,6 @@ export default function BrowserContainer({ slides }) {
     useEffect(() => {
         setTimeout(() => {
             setloading(false)
-            console.log("hi")
         }, 3000);
     }, [profile.displayName])
     useEffect(() => {
@@ -87,7 +86,7 @@ export default function BrowserContainer({ slides }) {
             </Header>
             <Card.Group>
             
-                {SlideRow.map((slideItem) => {console.log(slideItem.title,"HI FROM HERE"); return (
+                {SlideRow.map((slideItem) => {return (
                     <Card key={`${Category}-${slideItem.title.toLowerCase()}`}>
                         <Card.Title>
                             {slideItem.title}
