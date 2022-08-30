@@ -14,6 +14,7 @@ export default function BrowserContainer({ slides }) {
     const { firebase } = useContext(FireBase)
     const user = firebase.auth().currentUser || {}
     const [searchTerm, setSearchTerm] = useState('')
+    // we use categories fro searing in films and series
     const [Category, setCategory] = useState('series')
     const [SlideRow, setSlideRow] = useState([])
     // with every reload you do , the profile state set to null because maybe you wanted to see movies from another account you have (we cann't have multiaccounts but it's there to feel more like netflix)
@@ -27,7 +28,6 @@ export default function BrowserContainer({ slides }) {
     useEffect(() => {
         setTimeout(() => {
             setloading(false)
-            console.log("hi")
         }, 3000);
     }, [profile.displayName])
     useEffect(() => {
@@ -87,7 +87,7 @@ export default function BrowserContainer({ slides }) {
             </Header>
             <Card.Group>
             
-                {SlideRow.map((slideItem) => {console.log(slideItem.title,"HI FROM HERE"); return (
+                {SlideRow.map((slideItem) => {return (
                     <Card key={`${Category}-${slideItem.title.toLowerCase()}`}>
                         <Card.Title>
                             {slideItem.title}
