@@ -4,17 +4,23 @@ import { Browse } from '../pages/Browse'
 // here we have our general Protected Route
 export function IsUserRedirect({ user, loggedInPath, children, ...restprops }) {
     const history = useNavigate()
-
     if (!user) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useEffect(() => {
+
+            history("/", { replace: true })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [user])
         return (
             children
         )
     }
 
     if (user) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
+         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
-
+    
             history("/browse", { replace: true })
 
         }, [history])

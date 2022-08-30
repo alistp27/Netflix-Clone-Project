@@ -14,24 +14,24 @@ export function SignIn() {
   const history = useNavigate()
   const signinHandler = (event) => {
     event.preventDefault();
-    firebase
-      .auth()
-      .signInWithEmailAndPass(Email, Pass)
-      .then(() => {
-        history('/browse')
 
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(Email, Pass)
+      .then(() => {
+        history('/browse');
       })
-      .catch((err) => {
-        setEmail("");
-        setPass("");
-        setError(err.message);
+      .catch((error) => {
+        setEmail('');
+        setPass('');
+        setError(error.message);
       });
   };
   return (
     <>
       <HeaderContainer buttonToText={'Sign Up'} buttonToLink={'/signup'}>
         <Form>
-          <Form.Title>HI MY NAME IS ALISTP@&</Form.Title>
+          <Form.Title>Sign In</Form.Title>
           {error && <Form.Error> there is an Error</Form.Error>}
           <Form.Base method={"POST"} onSubmit={signinHandler}>
             <Form.Input
