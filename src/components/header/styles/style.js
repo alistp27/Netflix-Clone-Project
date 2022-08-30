@@ -87,6 +87,10 @@ font-size:18px;
 text-decoration:none;
 padding:10px;
 cursor :pointer;
+background-color:rgba(0,0,0,0.7);
+border-radius:10px;
+margin:5px;
+
 
 &:hover{
     font-weight:bold;
@@ -104,6 +108,7 @@ border :0;
 width :32px;
 height :32px;
 cursor :pointer;
+background-repeat: no-repeat;
 
 `
 export const DropDown = styled.div`
